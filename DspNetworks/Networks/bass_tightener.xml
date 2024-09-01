@@ -2,10 +2,10 @@
 
 <Network ID="bass_tightener" Version="0.0.0">
   <Node FactoryPath="container.chain" ID="bass_tightener" Bypassed="0"
-        ShowParameters="1">
+        ShowParameters="1" Name="bass_tightener">
     <Nodes>
       <Node ID="freq_split3" FactoryPath="container.split" ShowParameters="1"
-            Bypassed="0">
+            Bypassed="0" Name="freq_split3">
         <Parameters>
           <Parameter MinValue="20.0" MaxValue="20000.0" SkewFactor="0.2299045622348785"
                      ID="Band 1" Automated="1">
@@ -16,10 +16,10 @@
           </Parameter>
         </Parameters>
         <Nodes>
-          <Node ID="band1" FactoryPath="container.chain" Bypassed="0">
+          <Node ID="band1" FactoryPath="container.chain" Bypassed="0" Name="band1">
             <Nodes>
               <Node ID="lr1_1" FactoryPath="jdsp.jlinkwitzriley" NodeColour="4286224743"
-                    Bypassed="0">
+                    Bypassed="0" Name="lr1_1">
                 <ComplexData>
                   <Filters>
                     <Filter Index="-1"/>
@@ -31,17 +31,20 @@
                   <Parameter MinValue="0.0" MaxValue="2.0" StepSize="1.0" ID="Type" Value="0.0"/>
                 </Parameters>
               </Node>
-              <Node ID="stero_to_mono" FactoryPath="container.frame2_block" Bypassed="0">
+              <Node ID="stero_to_mono" FactoryPath="container.frame2_block" Bypassed="0"
+                    Name="stero_to_mono">
                 <Nodes>
-                  <Node ID="split" FactoryPath="container.split" Bypassed="0">
+                  <Node ID="split" FactoryPath="container.split" Bypassed="0" Name="split">
                     <Nodes>
-                      <Node ID="matrix" FactoryPath="routing.matrix" Bypassed="0" Folded="1">
+                      <Node ID="matrix" FactoryPath="routing.matrix" Bypassed="0" Folded="1"
+                            Name="matrix">
                         <Properties>
                           <Property ID="EmbeddedData" Value="72.3o8BJ+RKIy7R22DKonLqfAFY0uRyM37KsnjS04LRLu7RMmhAJFiLw.CL.kuAf3CjKCAmZdo.ly+ABfJogHKogvjjA.f2X0gk"/>
                         </Properties>
                         <Parameters/>
                       </Node>
-                      <Node ID="matrix1" FactoryPath="routing.matrix" Bypassed="0" Folded="1">
+                      <Node ID="matrix1" FactoryPath="routing.matrix" Bypassed="0" Folded="1"
+                            Name="matrix1">
                         <Properties>
                           <Property ID="EmbeddedData" Value="72.3o8BJ+RKIy7R22DKonLqfAFY0uRyM37KsnjS04LRLu7RMmhAJFiLw.CL.kuAf3yHP9AmZdo.ly+ABfJogHKogvjjA.f2Y1Al"/>
                         </Properties>
@@ -50,7 +53,7 @@
                     </Nodes>
                     <Parameters/>
                   </Node>
-                  <Node ID="gain2" FactoryPath="core.gain" Bypassed="1" Folded="1">
+                  <Node ID="gain2" FactoryPath="core.gain" Bypassed="1" Folded="1" Name="gain2">
                     <Parameters>
                       <Parameter MinValue="-100.0" MaxValue="0.0" StepSize="0.1000000014901161"
                                  SkewFactor="5.422270774841309" ID="Gain" Value="-2.999998554587364"/>
@@ -63,7 +66,7 @@
                 </Nodes>
                 <Parameters/>
               </Node>
-              <Node ID="comp" FactoryPath="dynamics.comp" Bypassed="0">
+              <Node ID="comp" FactoryPath="dynamics.comp" Bypassed="0" Name="comp">
                 <ComplexData>
                   <DisplayBuffers>
                     <DisplayBuffer Index="0"/>
@@ -81,7 +84,7 @@
                   <Parameter MinValue="0.0" MaxValue="2.0" StepSize="1.0" ID="Sidechain" Value="0.0"/>
                 </Parameters>
               </Node>
-              <Node ID="gain1" FactoryPath="core.gain" Bypassed="1">
+              <Node ID="gain1" FactoryPath="core.gain" Bypassed="1" Name="gain1">
                 <Parameters>
                   <Parameter MinValue="6.0" MaxValue="-2.999999999999995" StepSize="0.1" SkewFactor="5.422270979580217"
                              ID="Gain" Automated="1"/>
@@ -94,10 +97,10 @@
             </Nodes>
             <Parameters/>
           </Node>
-          <Node ID="band2" FactoryPath="container.chain" Bypassed="0">
+          <Node ID="band2" FactoryPath="container.chain" Bypassed="0" Name="band2">
             <Nodes>
               <Node ID="lr2_1" FactoryPath="jdsp.jlinkwitzriley" NodeColour="4284979601"
-                    Bypassed="0">
+                    Bypassed="0" Name="lr2_1">
                 <ComplexData>
                   <Filters>
                     <Filter Index="-1"/>
@@ -114,7 +117,7 @@
           </Node>
         </Nodes>
       </Node>
-      <Node ID="svf_eq1" FactoryPath="filters.svf_eq" Bypassed="0">
+      <Node ID="svf_eq1" FactoryPath="filters.svf_eq" Bypassed="0" Name="svf_eq1">
         <ComplexData>
           <Filters>
             <Filter Index="-1"/>

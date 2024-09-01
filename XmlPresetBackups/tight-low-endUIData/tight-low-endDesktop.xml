@@ -21,21 +21,21 @@
              stepSize="0.1000000014901161" max="100.0" suffix=" dB" isPluginParameter="1"
              height="64.0" bgColour="0" itemColour="0" itemColour2="0" width="64.0"
              numStrips="64.0" filmstripImage="{PROJECT_FOLDER}subtle_knob.png"
-             mode="Decibel"/>
+             mode="Decibel" showTextBox="0"/>
   <Component type="ScriptLabel" id="TightnessLabel" x="89.0" y="355.0" text="TIGHTNESS"
              fontStyle="Bold" alignment="right" width="75.0" height="20.0"
              textColour="4280339679" fontName="Avenir Next" fontSize="14.0"
              editable="0"/>
   <Component type="ScriptLabel" id="TightnessValue" x="95.0" y="370.0" alignment="right"
-             text="20.10" width="70.0" height="20.0" textColour="4292926663"
+             text="20.20" width="70.0" height="20.0" textColour="4292926663"
              itemColour2="0" editable="0" fontName="Avenir Next" fontSize="14.0"/>
-  <Component type="ScriptPanel" id="Panel1" x="300.0" y="100.0" width="270"
-             height="220" borderRadius="0.0" borderSize="0.0" bufferToImage="1"/>
+  <Component type="ScriptPanel" id="Panel1" x="300.0" y="100.0" width="270.0"
+             height="220.0" borderRadius="0.0" borderSize="0.0" bufferToImage="1"/>
   <Component type="ScriptSlider" id="Gain" x="319.0" y="341.0" middlePosition="9.5"
              max="18.0" suffix=" dB" isPluginParameter="1" height="64.0" bgColour="0"
              itemColour="0" itemColour2="0" width="64.0" numStrips="64.0"
              filmstripImage="{PROJECT_FOLDER}subtle_knob.png" mode="Decibel"
-             min="1.0" defaultValue="1.0"/>
+             min="1.0" defaultValue="1.0" showTextBox="0"/>
   <Component type="ScriptLabel" id="GainLabel" x="355.0" y="353.0" text="BOOST"
              fontStyle="Bold" alignment="right" width="75.0" height="20.0"
              textColour="4280339679" fontName="Avenir Next" fontSize="14.0"
@@ -47,7 +47,7 @@
              stepSize="0.1000000014901161" max="500.0" suffix=" dB" isPluginParameter="1"
              mode="Frequency" height="64.0" bgColour="0" itemColour="0" itemColour2="0"
              width="64.0" numStrips="64.0" filmstripImage="{PROJECT_FOLDER}subtle_knob.png"
-             text="Cut Off" defaultValue="90.0" min="20.0"/>
+             text="Cut Off" defaultValue="90.0" min="20.0" showTextBox="0"/>
   <Component type="ScriptLabel" id="CutoffLabel" x="221.0" y="353.0" text="CUT OFF"
              fontStyle="Bold" alignment="right" width="75.0" height="20.0"
              textColour="4280339679" fontName="Avenir Next" fontSize="14.0"
@@ -59,7 +59,7 @@
              max="300.0" suffix="ms" isPluginParameter="1" height="64.0" bgColour="0"
              itemColour="0" itemColour2="0" width="64.0" numStrips="64.0"
              filmstripImage="{PROJECT_FOLDER}subtle_knob.png" mode="Time"
-             defaultValue="50.0"/>
+             defaultValue="50.0" showTextBox="0"/>
   <Component type="ScriptLabel" id="ReleaseLabel" x="513.0" y="353.0" text="RELEASE"
              fontStyle="Bold" alignment="right" width="75.0" height="20.0"
              textColour="4280339679" fontName="Avenir Next" fontSize="14.0"

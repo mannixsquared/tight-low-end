@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<Processor Type="SynthChain" ID="bass_tightener" Bypassed="0" Gain="1.0"
+<Processor Type="SynthChain" ID="tight-low-end" Bypassed="0" Gain="1.0"
            Balance="0.0" VoiceLimit="64.0" KillFadeTime="20.0" IconColour="0"
            packageName="" BuildVersion="650">
   <ChildProcessors>
@@ -9,12 +9,12 @@
         <Processor Type="ScriptProcessor" ID="Interface" Bypassed="0">
           <ChildProcessors/>
           <Content>
-            <Control type="ScriptSlider" id="Tightness" value="20.10000038146973"/>
+            <Control type="ScriptSlider" id="Tightness" value="20.20000076293945"/>
             <Control type="ScriptSlider" id="Gain" value="6.570000171661377"/>
             <Control type="ScriptSlider" id="CutOff" value="133.5"/>
             <Control type="ScriptSlider" id="Release" value="116.0299987792969"/>
           </Content>
-          <UIData Source="bass_tightenerUIData"/>
+          <UIData Source="tight-low-endUIData"/>
         </Processor>
       </ChildProcessors>
     </Processor>
@@ -48,7 +48,7 @@
                Balance="0.0" VoiceLimit="256.0" KillFadeTime="20.0" IconColour="0"
                SyncMode="1.0" PitchTracking="0.0" LoopEnabled="1.0" RootNote="64.0"
                SampleStartMod="0.0" Reversed="0.0" FileName="/Users/johnmannix/Library/Mobile Documents/com~apple~CloudDocs/Music/A Mugshot in your Eyes 2.wav"
-               min="0" max="7532100" loopStart="0" loopEnd="7532100">
+               min="0" max="0" loopStart="0" loopEnd="0">
       <ChildProcessors>
         <Processor Type="MidiProcessorChain" ID="Midi Processor" Bypassed="0">
           <ChildProcessors/>
