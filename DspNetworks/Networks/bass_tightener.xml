@@ -84,7 +84,7 @@
                   <Parameter MinValue="0.0" MaxValue="2.0" StepSize="1.0" ID="Sidechain" Value="0.0"/>
                 </Parameters>
               </Node>
-              <Node ID="gain1" FactoryPath="core.gain" Bypassed="1" Name="gain1">
+              <Node ID="gain1" FactoryPath="core.gain" Bypassed="0" Name="gain1">
                 <Parameters>
                   <Parameter MinValue="6.0" MaxValue="-2.999999999999995" StepSize="0.1" SkewFactor="5.422270979580217"
                              ID="Gain" Automated="1"/>
@@ -127,8 +127,8 @@
           <Parameter MinValue="20.0" MaxValue="20000.0" SkewFactor="0.2299045622348785"
                      ID="Frequency" Value="50.0"/>
           <Parameter MinValue="0.300000011920929" MaxValue="9.899999618530273" SkewFactor="0.2647178173065186"
-                     ID="Q" Automated="1"/>
-          <Parameter MinValue="-18.0" MaxValue="18.0" ID="Gain" Value="0.0"/>
+                     ID="Q" Value="1.012308775575865"/>
+          <Parameter MinValue="-18.0" MaxValue="18.0" ID="Gain" Value="1.018124999999997"/>
           <Parameter MinValue="0.0" MaxValue="1.0" SkewFactor="0.3010300099849701"
                      ID="Smoothing" Value="0.009999999776482582"/>
           <Parameter MinValue="0.0" MaxValue="4.0" StepSize="1.0" ID="Mode" Value="1.0"/>
@@ -138,22 +138,21 @@
     </Nodes>
     <Parameters>
       <Parameter ID="Cut Off" MinValue="20.0" MaxValue="20000.0" SkewFactor="0.2299045622348785"
-                 Value="81.03182599523561">
+                 Value="81.03182599523565">
         <Connections>
           <Connection NodeId="freq_split3" ParameterId="Band 1"/>
         </Connections>
       </Parameter>
       <Parameter ID="Tightness" MinValue="-100.0" MaxValue="0.0" StepSize="0.1000000014901161"
-                 SkewFactor="5.422270774841309" Value="-31.39999897778035">
+                 SkewFactor="5.422270774841309" Value="-15.79999874532224">
         <Connections>
           <Connection NodeId="comp" ParameterId="Threshhold"/>
-          <Connection NodeId="gain1" ParameterId="Gain"/>
         </Connections>
       </Parameter>
-      <Parameter ID="Gain" MinValue="0.300000011920929" MaxValue="9.899999618530273"
-                 Value="0.300000011920929" SkewFactor="0.2647178173065186">
+      <Parameter ID="Gain" MinValue="6.0" MaxValue="0.0" Value="-2.999999999999995"
+                 SkewFactor="5.422270979580217" StepSize="0.1">
         <Connections>
-          <Connection NodeId="svf_eq1" ParameterId="Q"/>
+          <Connection NodeId="gain1" ParameterId="Gain"/>
         </Connections>
       </Parameter>
       <Parameter ID="Release" MinValue="0.0" MaxValue="300.0" StepSize="0.1000000014901161"

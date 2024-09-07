@@ -9,10 +9,10 @@
         <Processor Type="ScriptProcessor" ID="Interface" Bypassed="0">
           <ChildProcessors/>
           <Content>
-            <Control type="ScriptSlider" id="Tightness" value="20.20000076293945"/>
-            <Control type="ScriptSlider" id="Gain" value="6.570000171661377"/>
-            <Control type="ScriptSlider" id="CutOff" value="133.5"/>
-            <Control type="ScriptSlider" id="Release" value="116.0299987792969"/>
+            <Control type="ScriptSlider" id="Tightness" value="24.89999961853027"/>
+            <Control type="ScriptSlider" id="Gain" value="1.629999995231628"/>
+            <Control type="ScriptSlider" id="CutOff" value="122.0"/>
+            <Control type="ScriptSlider" id="Release" value="50.0"/>
           </Content>
           <UIData Source="tight-low-endUIData"/>
         </Processor>
@@ -47,8 +47,8 @@
     <Processor Type="AudioLooper" ID="Audio Loop Player1" Bypassed="0" Gain="0.3427677750587463"
                Balance="0.0" VoiceLimit="256.0" KillFadeTime="20.0" IconColour="0"
                SyncMode="1.0" PitchTracking="0.0" LoopEnabled="1.0" RootNote="64.0"
-               SampleStartMod="0.0" Reversed="0.0" FileName="/Users/johnmannix/Library/Mobile Documents/com~apple~CloudDocs/Music/A Mugshot in your Eyes 2.wav"
-               min="0" max="0" loopStart="0" loopEnd="0">
+               SampleStartMod="0.0" Reversed="0.0" FileName="/Users/johnmannix/Documents/REAPER Media/Livin for the Night/Livin for the Night.mp3"
+               min="1750364" max="5147520" loopStart="1750364" loopEnd="5147520">
       <ChildProcessors>
         <Processor Type="MidiProcessorChain" ID="Midi Processor" Bypassed="0">
           <ChildProcessors/>
