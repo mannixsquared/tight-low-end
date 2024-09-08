@@ -83,6 +83,9 @@
                              SkewFactor="0.2968033850193024" ID="Ratio" Value="2.500000022351742"/>
                   <Parameter MinValue="0.0" MaxValue="2.0" StepSize="1.0" ID="Sidechain" Value="0.0"/>
                 </Parameters>
+                <ModulationTargets>
+                  <Connection NodeId="svf_eq1" ParameterId="Gain"/>
+                </ModulationTargets>
               </Node>
               <Node ID="gain1" FactoryPath="core.gain" Bypassed="0" Name="gain1">
                 <Parameters>
@@ -125,13 +128,13 @@
         </ComplexData>
         <Parameters>
           <Parameter MinValue="20.0" MaxValue="20000.0" SkewFactor="0.2299045622348785"
-                     ID="Frequency" Value="50.0"/>
+                     ID="Frequency" Automated="1"/>
           <Parameter MinValue="0.300000011920929" MaxValue="9.899999618530273" SkewFactor="0.2647178173065186"
-                     ID="Q" Value="1.012308775575865"/>
-          <Parameter MinValue="-18.0" MaxValue="18.0" ID="Gain" Value="1.018124999999997"/>
+                     ID="Q" Value="0.9542081923916657"/>
+          <Parameter MinValue="0.0" MaxValue="7.0" ID="Gain" Automated="1"/>
           <Parameter MinValue="0.0" MaxValue="1.0" SkewFactor="0.3010300099849701"
                      ID="Smoothing" Value="0.009999999776482582"/>
-          <Parameter MinValue="0.0" MaxValue="4.0" StepSize="1.0" ID="Mode" Value="1.0"/>
+          <Parameter MinValue="0.0" MaxValue="4.0" StepSize="1.0" ID="Mode" Value="4.0"/>
           <Parameter MinValue="0.0" MaxValue="1.0" StepSize="1.0" ID="Enabled" Value="1.0"/>
         </Parameters>
       </Node>
@@ -141,6 +144,7 @@
                  Value="81.03182599523565">
         <Connections>
           <Connection NodeId="freq_split3" ParameterId="Band 1"/>
+          <Connection NodeId="svf_eq1" ParameterId="Frequency"/>
         </Connections>
       </Parameter>
       <Parameter ID="Tightness" MinValue="-100.0" MaxValue="0.0" StepSize="0.1000000014901161"

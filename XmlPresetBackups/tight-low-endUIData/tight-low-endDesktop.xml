@@ -27,7 +27,7 @@
              textColour="4280339679" fontName="Avenir Next" fontSize="14.0"
              editable="0"/>
   <Component type="ScriptLabel" id="TightnessValue" x="95.0" y="370.0" alignment="right"
-             text="24.90" width="70.0" height="20.0" textColour="4292926663"
+             text="23.50" width="70.0" height="20.0" textColour="4292926663"
              itemColour2="0" editable="0" fontName="Avenir Next" fontSize="14.0"/>
   <Component type="ScriptPanel" id="Panel1" x="300.0" y="100.0" width="270.0"
              height="220.0" borderRadius="0.0" borderSize="0.0" bufferToImage="1"/>
@@ -41,7 +41,7 @@
              textColour="4280339679" fontName="Avenir Next" fontSize="14.0"
              editable="0"/>
   <Component type="ScriptLabel" id="GainValue" x="361.0" y="368.0" alignment="right"
-             text="1.6 dB" width="70.0" height="20.0" textColour="4292926663"
+             text="2.0 dB" width="70.0" height="20.0" textColour="4292926663"
              itemColour2="0" editable="0" fontName="Avenir Next" fontSize="14.0"/>
   <Component type="ScriptSlider" id="CutOff" x="174.0" y="341.0" middlePosition="90.0"
              stepSize="0.1000000014901161" max="500.0" suffix=" dB" isPluginParameter="1"
@@ -53,7 +53,7 @@
              textColour="4280339679" fontName="Avenir Next" fontSize="14.0"
              editable="0"/>
   <Component type="ScriptLabel" id="CutoffValue" x="227.0" y="368.0" alignment="right"
-             text="122.0 Hz" width="70.0" height="20.0" textColour="4292926663"
+             text="90.0 Hz" width="70.0" height="20.0" textColour="4292926663"
              itemColour2="0" editable="0" fontName="Avenir Next" fontSize="14.0"/>
   <Component type="ScriptSlider" id="Release" x="465.0" y="341.0" middlePosition="150.0"
              max="300.0" suffix="ms" isPluginParameter="1" height="64.0" bgColour="0"
