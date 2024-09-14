@@ -27,21 +27,21 @@
              textColour="4280339679" fontName="Avenir Next" fontSize="14.0"
              editable="0"/>
   <Component type="ScriptLabel" id="TightnessValue" x="95.0" y="370.0" alignment="right"
-             text="23.50" width="70.0" height="20.0" textColour="4292926663"
+             text="12.90" width="70.0" height="20.0" textColour="4292926663"
              itemColour2="0" editable="0" fontName="Avenir Next" fontSize="14.0"/>
   <Component type="ScriptPanel" id="Panel1" x="300.0" y="100.0" width="270.0"
              height="220.0" borderRadius="0.0" borderSize="0.0" bufferToImage="1"/>
-  <Component type="ScriptSlider" id="Gain" x="319.0" y="341.0" middlePosition="9.5"
-             max="18.0" suffix=" dB" isPluginParameter="1" height="64.0" bgColour="0"
+  <Component type="ScriptSlider" id="Gain" x="319.0" y="341.0" middlePosition="0.5"
+             suffix=" dB" isPluginParameter="1" height="64.0" bgColour="0"
              itemColour="0" itemColour2="0" width="64.0" numStrips="64.0"
              filmstripImage="{PROJECT_FOLDER}subtle_knob.png" mode="Decibel"
-             min="1.0" defaultValue="1.0" showTextBox="0"/>
+             showTextBox="0"/>
   <Component type="ScriptLabel" id="GainLabel" x="355.0" y="353.0" text="BOOST"
              fontStyle="Bold" alignment="right" width="75.0" height="20.0"
              textColour="4280339679" fontName="Avenir Next" fontSize="14.0"
              editable="0"/>
   <Component type="ScriptLabel" id="GainValue" x="361.0" y="368.0" alignment="right"
-             text="2.0 dB" width="70.0" height="20.0" textColour="4292926663"
+             text="0.6" width="70.0" height="20.0" textColour="4292926663"
              itemColour2="0" editable="0" fontName="Avenir Next" fontSize="14.0"/>
   <Component type="ScriptSlider" id="CutOff" x="174.0" y="341.0" middlePosition="90.0"
              stepSize="0.1000000014901161" max="500.0" suffix=" dB" isPluginParameter="1"
@@ -65,7 +65,7 @@
              textColour="4280339679" fontName="Avenir Next" fontSize="14.0"
              editable="0"/>
   <Component type="ScriptLabel" id="ReleaseValue" x="519.0" y="368.0" alignment="right"
-             text="50.0 ms" width="70.0" height="20.0" textColour="4292926663"
+             text="31.3 ms" width="70.0" height="20.0" textColour="4292926663"
              itemColour2="0" editable="0" fontName="Avenir Next" fontSize="14.0"/>
   <Component type="ScriptFloatingTile" id="FloatingTile1" x="30.0" y="100.0"
              width="220.0" height="220.0" ContentType="AudioAnalyser" bgColour="0"

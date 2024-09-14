@@ -9,10 +9,10 @@
         <Processor Type="ScriptProcessor" ID="Interface" Bypassed="0">
           <ChildProcessors/>
           <Content>
-            <Control type="ScriptSlider" id="Tightness" value="23.5"/>
-            <Control type="ScriptSlider" id="Gain" value="1.970000028610229"/>
+            <Control type="ScriptSlider" id="Tightness" value="12.90000057220459"/>
+            <Control type="ScriptSlider" id="Gain" value="0.6200000047683716"/>
             <Control type="ScriptSlider" id="CutOff" value="90.0"/>
-            <Control type="ScriptSlider" id="Release" value="50.0"/>
+            <Control type="ScriptSlider" id="Release" value="31.28000068664551"/>
           </Content>
           <UIData Source="tight-low-endUIData"/>
         </Processor>

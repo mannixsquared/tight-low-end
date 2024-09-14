@@ -84,23 +84,14 @@
                   <Parameter MinValue="0.0" MaxValue="2.0" StepSize="1.0" ID="Sidechain" Value="0.0"/>
                 </Parameters>
                 <ModulationTargets>
-                  <Connection NodeId="svf_eq1" ParameterId="Gain"/>
+                  <Connection NodeId="intensity" ParameterId="Value"/>
                 </ModulationTargets>
-              </Node>
-              <Node ID="gain1" FactoryPath="core.gain" Bypassed="0" Name="gain1">
-                <Parameters>
-                  <Parameter MinValue="6.0" MaxValue="-2.999999999999995" StepSize="0.1" SkewFactor="5.422270979580217"
-                             ID="Gain" Automated="1"/>
-                  <Parameter MinValue="0.0" MaxValue="1000.0" StepSize="0.1000000014901161"
-                             SkewFactor="0.3010300099849701" ID="Smoothing" Value="20.0"/>
-                  <Parameter MinValue="-100.0" MaxValue="0.0" StepSize="0.1000000014901161"
-                             SkewFactor="5.422270774841309" ID="ResetValue" Value="0.0"/>
-                </Parameters>
               </Node>
             </Nodes>
             <Parameters/>
           </Node>
-          <Node ID="band2" FactoryPath="container.chain" Bypassed="0" Name="band2">
+          <Node ID="band2" FactoryPath="container.chain" Bypassed="0" Name="band2"
+                Folded="1">
             <Nodes>
               <Node ID="lr2_1" FactoryPath="jdsp.jlinkwitzriley" NodeColour="4284979601"
                     Bypassed="0" Name="lr2_1">
@@ -120,6 +111,15 @@
           </Node>
         </Nodes>
       </Node>
+      <Node ID="intensity" FactoryPath="control.intensity" Bypassed="0" Name="intensity">
+        <ModulationTargets>
+          <Connection NodeId="svf_eq1" ParameterId="Gain"/>
+        </ModulationTargets>
+        <Parameters>
+          <Parameter MinValue="1.0" MaxValue="0.0" ID="Value" Automated="1"/>
+          <Parameter MinValue="0.0" MaxValue="1.0" ID="Intensity" Automated="1"/>
+        </Parameters>
+      </Node>
       <Node ID="svf_eq1" FactoryPath="filters.svf_eq" Bypassed="0" Name="svf_eq1">
         <ComplexData>
           <Filters>
@@ -128,12 +128,12 @@
         </ComplexData>
         <Parameters>
           <Parameter MinValue="20.0" MaxValue="20000.0" SkewFactor="0.2299045622348785"
-                     ID="Frequency" Automated="1"/>
+                     ID="Frequency" Value="50"/>
           <Parameter MinValue="0.300000011920929" MaxValue="9.899999618530273" SkewFactor="0.2647178173065186"
-                     ID="Q" Value="0.9542081923916657"/>
-          <Parameter MinValue="0.0" MaxValue="7.0" ID="Gain" Automated="1"/>
+                     ID="Q" Value="0.6909895965719732"/>
+          <Parameter MinValue="18.0" MaxValue="0.0" ID="Gain" Automated="1"/>
           <Parameter MinValue="0.0" MaxValue="1.0" SkewFactor="0.3010300099849701"
-                     ID="Smoothing" Value="0.009999999776482582"/>
+                     ID="Smoothing" Value="0.0"/>
           <Parameter MinValue="0.0" MaxValue="4.0" StepSize="1.0" ID="Mode" Value="4.0"/>
           <Parameter MinValue="0.0" MaxValue="1.0" StepSize="1.0" ID="Enabled" Value="1.0"/>
         </Parameters>
@@ -141,10 +141,9 @@
     </Nodes>
     <Parameters>
       <Parameter ID="Cut Off" MinValue="20.0" MaxValue="20000.0" SkewFactor="0.2299045622348785"
-                 Value="81.03182599523565">
+                 Value="90.76661982091692">
         <Connections>
           <Connection NodeId="freq_split3" ParameterId="Band 1"/>
-          <Connection NodeId="svf_eq1" ParameterId="Frequency"/>
         </Connections>
       </Parameter>
       <Parameter ID="Tightness" MinValue="-100.0" MaxValue="0.0" StepSize="0.1000000014901161"
@@ -153,10 +152,9 @@
           <Connection NodeId="comp" ParameterId="Threshhold"/>
         </Connections>
       </Parameter>
-      <Parameter ID="Gain" MinValue="6.0" MaxValue="0.0" Value="-2.999999999999995"
-                 SkewFactor="5.422270979580217" StepSize="0.1">
+      <Parameter ID="Gain" MinValue="0.0" MaxValue="1.0" Value="0.0">
         <Connections>
-          <Connection NodeId="gain1" ParameterId="Gain"/>
+          <Connection NodeId="intensity" ParameterId="Intensity"/>
         </Connections>
       </Parameter>
       <Parameter ID="Release" MinValue="0.0" MaxValue="300.0" StepSize="0.1000000014901161"

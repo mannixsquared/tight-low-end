@@ -31,7 +31,7 @@ inline function onCutoffControl(component, value)
 
 inline function onGainControl(component, value)
 {
-	local v = Engine.doubleToString(value, 1) + " dB";
+	local v = Engine.doubleToString(value, 1);
 	TightFX.setAttribute(2, value);
 	GainValue.set("text", v);
 };
