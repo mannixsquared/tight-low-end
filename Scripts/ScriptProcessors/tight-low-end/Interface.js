@@ -1,48 +1,11 @@
-Content.makeFrontInterface(600, 430);
+include("ScriptProcessors/tight-low-end/LookAndFeel.js");
 
-Content.getComponent("Tightness").setControlCallback(onTightnessControl);
-Content.getComponent("CutOff").setControlCallback(onCutoffControl);
-Content.getComponent("Gain").setControlCallback(onGainControl);
-Content.getComponent("Release").setControlCallback(onReleaseControl);
+Content.makeFrontInterface(720, 430);
 
 const TightFX = Synth.getEffect("TightFX");
-const TightnessValue = Content.getComponent("TightnessValue");
-const CutOffValue = Content.getComponent("CutoffValue");
-const GainValue = Content.getComponent("GainValue");
-const ReleaseValue = Content.getComponent("ReleaseValue");
 const var Panel1 = Content.getComponent("Panel1");
 
 const dbsource = Synth.getDisplayBufferSource("TightFX");
-
-inline function onTightnessControl(component, value)
-{
-	local v = Engine.doubleToString(value, 2);
-	TightFX.setAttribute(1, -value);
-	TightnessValue.set("text", v);
-};
-
-
-inline function onCutoffControl(component, value)
-{
-	local v = Engine.doubleToString(value, 1) + " Hz";
-	TightFX.setAttribute(0, value);
-	CutOffValue.set("text", v);
-};
-
-inline function onGainControl(component, value)
-{
-	local v = Engine.doubleToString(value, 1);
-	TightFX.setAttribute(2, value);
-	GainValue.set("text", v);
-};
-
-
-inline function onReleaseControl(component, value)
-{
-	local v = Engine.doubleToString(value, 1) + " ms";
-	TightFX.setAttribute(3, value);
-	ReleaseValue.set("text", v);
-};
 
 Panel1.setPaintRoutine(function(g)
 {

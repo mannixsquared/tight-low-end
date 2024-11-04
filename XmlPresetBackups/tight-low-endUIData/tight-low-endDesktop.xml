@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <ContentProperties DeviceType="Desktop">
-  <Component type="ScriptPanel" id="MainPanel" x="0.0" y="0.0" width="600.0"
+  <Component type="ScriptPanel" id="MainPanel" x="0.0" y="0.0" width="720.0"
              height="430.0" bgColour="1514537" itemColour="4278387459" itemColour2="4278387459"
-             textColour="4281019179" locked="1">
-    <Component type="ScriptLabel" id="Version" x="450.0" y="10.0" text="V1.0"
+             textColour="4281019179" locked="1" borderSize="0.0">
+    <Component type="ScriptLabel" id="Version" x="580.0" y="10.0" text="V1.0"
                alignment="right" fontStyle="Bold" parentComponent="MainPanel"
-               fontName="Avenir Next" fontSize="16.0" textColour="4280339679"/>
-    <Component type="ScriptLabel" id="Company" x="430.0" y="30.0" alignment="right"
+               fontName="Avenir Next" fontSize="16.0" textColour="4280339679"
+               editable="0"/>
+    <Component type="ScriptLabel" id="Company" x="560.0" y="30.0" alignment="right"
                text="&#169; Mannix Squared, 2024" textColour="4292926663" parentComponent="MainPanel"
-               fontName="Avenir Next" fontSize="16.0" width="150.0"/>
+               fontName="Avenir Next" fontSize="16.0" width="150.0" editable="0"/>
     <Component type="ScriptLabel" id="Title" x="78.0" y="19.0" width="180.0"
                height="40.0" parentComponent="MainPanel" editable="0" text="TIGHT LOW END"
                fontName="Avenir Next" fontStyle="Regular" fontSize="26.0" alignment="left"
@@ -18,57 +19,39 @@
                parentComponent="MainPanel" fileName="{PROJECT_FOLDER}logo.png"/>
   </Component>
   <Component type="ScriptSlider" id="Tightness" x="29.0" y="343.0" middlePosition="18.0"
-             stepSize="0.1000000014901161" max="100.0" suffix=" dB" isPluginParameter="1"
-             height="64.0" bgColour="0" itemColour="0" itemColour2="0" width="64.0"
-             numStrips="64.0" filmstripImage="{PROJECT_FOLDER}subtle_knob.png"
-             mode="Decibel" showTextBox="0"/>
-  <Component type="ScriptLabel" id="TightnessLabel" x="89.0" y="355.0" text="TIGHTNESS"
-             fontStyle="Bold" alignment="right" width="75.0" height="20.0"
-             textColour="4280339679" fontName="Avenir Next" fontSize="14.0"
-             editable="0"/>
-  <Component type="ScriptLabel" id="TightnessValue" x="95.0" y="370.0" alignment="right"
-             text="12.90" width="70.0" height="20.0" textColour="4292926663"
-             itemColour2="0" editable="0" fontName="Avenir Next" fontSize="14.0"/>
-  <Component type="ScriptPanel" id="Panel1" x="300.0" y="100.0" width="270.0"
+             stepSize="0.1000000014901161" max="100.0" height="64.0" bgColour="0"
+             itemColour="0" itemColour2="0" width="130.0" numStrips="64.0"
+             showTextBox="0" processorId="TightFX" parameterId="Tightness"
+             pluginParameterName="Tightness" mode="Decibel" isPluginParameter="1"
+             isMetaParameter="1"/>
+  <Component type="ScriptPanel" id="Panel1" x="300.0" y="100.0" width="400.0"
              height="220.0" borderRadius="0.0" borderSize="0.0" bufferToImage="1"/>
-  <Component type="ScriptSlider" id="Gain" x="319.0" y="341.0" middlePosition="0.5"
-             suffix=" dB" isPluginParameter="1" height="64.0" bgColour="0"
-             itemColour="0" itemColour2="0" width="64.0" numStrips="64.0"
-             filmstripImage="{PROJECT_FOLDER}subtle_knob.png" mode="Decibel"
-             showTextBox="0"/>
-  <Component type="ScriptLabel" id="GainLabel" x="355.0" y="353.0" text="BOOST"
-             fontStyle="Bold" alignment="right" width="75.0" height="20.0"
-             textColour="4280339679" fontName="Avenir Next" fontSize="14.0"
-             editable="0"/>
-  <Component type="ScriptLabel" id="GainValue" x="361.0" y="368.0" alignment="right"
-             text="0.6" width="70.0" height="20.0" textColour="4292926663"
-             itemColour2="0" editable="0" fontName="Avenir Next" fontSize="14.0"/>
+  <Component type="ScriptSlider" id="Gain" x="310.0" y="340.0" middlePosition="0.5"
+             isPluginParameter="1" height="64.0" bgColour="0" itemColour="0"
+             itemColour2="0" width="110.0" numStrips="64.0" showTextBox="0"
+             processorId="TightFX" parameterId="Gain" pluginParameterName="Gain"
+             isMetaParameter="1"/>
   <Component type="ScriptSlider" id="CutOff" x="174.0" y="341.0" middlePosition="90.0"
-             stepSize="0.1000000014901161" max="500.0" suffix=" dB" isPluginParameter="1"
+             stepSize="0.1000000014901161" max="500.0" suffix="Hz" isPluginParameter="1"
              mode="Frequency" height="64.0" bgColour="0" itemColour="0" itemColour2="0"
-             width="64.0" numStrips="64.0" filmstripImage="{PROJECT_FOLDER}subtle_knob.png"
-             text="Cut Off" defaultValue="90.0" min="20.0" showTextBox="0"/>
-  <Component type="ScriptLabel" id="CutoffLabel" x="221.0" y="353.0" text="CUT OFF"
-             fontStyle="Bold" alignment="right" width="75.0" height="20.0"
-             textColour="4280339679" fontName="Avenir Next" fontSize="14.0"
-             editable="0"/>
-  <Component type="ScriptLabel" id="CutoffValue" x="227.0" y="368.0" alignment="right"
-             text="90.0 Hz" width="70.0" height="20.0" textColour="4292926663"
-             itemColour2="0" editable="0" fontName="Avenir Next" fontSize="14.0"/>
-  <Component type="ScriptSlider" id="Release" x="465.0" y="341.0" middlePosition="150.0"
+             width="120.0" numStrips="64.0" text="Cut Off" defaultValue="90.0"
+             min="20.0" showTextBox="0" processorId="TightFX" parameterId="Cut Off"
+             pluginParameterName="Cut Off" isMetaParameter="1"/>
+  <Component type="ScriptSlider" id="Release" x="430.0" y="340.0" middlePosition="150.0"
              max="300.0" suffix="ms" isPluginParameter="1" height="64.0" bgColour="0"
-             itemColour="0" itemColour2="0" width="64.0" numStrips="64.0"
-             filmstripImage="{PROJECT_FOLDER}subtle_knob.png" mode="Time"
-             defaultValue="50.0" showTextBox="0"/>
-  <Component type="ScriptLabel" id="ReleaseLabel" x="513.0" y="353.0" text="RELEASE"
-             fontStyle="Bold" alignment="right" width="75.0" height="20.0"
-             textColour="4280339679" fontName="Avenir Next" fontSize="14.0"
-             editable="0"/>
-  <Component type="ScriptLabel" id="ReleaseValue" x="519.0" y="368.0" alignment="right"
-             text="31.3 ms" width="70.0" height="20.0" textColour="4292926663"
-             itemColour2="0" editable="0" fontName="Avenir Next" fontSize="14.0"/>
+             itemColour="0" itemColour2="0" width="120.0" numStrips="64.0"
+             mode="Time" defaultValue="50.0" showTextBox="0" processorId="TightFX"
+             parameterId="Release" pluginParameterName="Release" isMetaParameter="1"/>
   <Component type="ScriptFloatingTile" id="FloatingTile1" x="30.0" y="100.0"
              width="220.0" height="220.0" ContentType="AudioAnalyser" bgColour="0"
              itemColour="4280339679" itemColour2="4282729797" textColour="0"
              Data="{&#10;  &quot;ProcessorId&quot;: &quot;Analyser1&quot;,&#10;  &quot;Index&quot;: 0,&#10;  &quot;FollowWorkspace&quot;: false&#10;}"/>
+  <Component type="ScriptSlider" id="Harmonics" x="560.0" y="340.0" middlePosition="0.5"
+             isPluginParameter="1" height="60.0" bgColour="0" itemColour="0"
+             itemColour2="0" width="140.0" numStrips="64.0" showTextBox="0"
+             processorId="TightFX" parameterId="Harmonics" pluginParameterName="Harmonics"
+             isMetaParameter="1"/>
+  <Component type="ScriptButton" id="Button1" x="250.0" y="24.0" text="SOLO"
+             width="89.0" height="30" isMetaParameter="1" processorId="TightFX"
+             parameterId="SoloLowEnd"/>
 </ContentProperties>
