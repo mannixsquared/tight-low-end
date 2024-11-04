@@ -28,8 +28,9 @@
     </Processor>
     <Processor Type="EffectChain" ID="FX" Bypassed="0">
       <ChildProcessors>
-        <Processor Type="Hardcoded Master FX" ID="HardcodedMasterFX1" Bypassed="0"
-                   Network="No network">
+        <Processor Type="Hardcoded Master FX" ID="TightFX" Bypassed="0" Network="bass_tightener"
+                   CutOff="84.54846954345703" Tightness="64.69999694824219" Gain="0.0"
+                   Release="0.0" Harmonics="0.0" SoloLowEnd="1.0">
           <ChildProcessors/>
           <RoutingMatrix NumSourceChannels="2" Channel0="0" Send0="-1" Channel1="1" Send1="-1"/>
         </Processor>

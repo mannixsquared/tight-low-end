@@ -1,4 +1,4 @@
-include("ScriptProcessors/tight-low-end/LookAndFeel.js");
+include("LookAndFeel.js");
 
 Content.makeFrontInterface(720, 430);
 
