@@ -52,6 +52,6 @@
              processorId="TightFX" parameterId="Harmonics" pluginParameterName="Harmonics"
              isMetaParameter="1"/>
   <Component type="ScriptButton" id="Button1" x="250.0" y="24.0" text="SOLO"
-             width="89.0" height="30" isMetaParameter="1" processorId="TightFX"
+             width="89.0" height="30.0" isMetaParameter="1" processorId="TightFX"
              parameterId="SoloLowEnd"/>
 </ContentProperties>

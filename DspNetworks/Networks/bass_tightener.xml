@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<Network ID="bass_tightener" Version="0.0.0">
+<Network ID="bass_tightener" Version="0.0.0" AllowCompilation="1">
   <Node FactoryPath="container.chain" ID="bass_tightener" Bypassed="0"
         ShowParameters="1" Name="bass_tightener">
     <Nodes>
@@ -42,7 +42,7 @@
                 </ComplexData>
                 <Parameters>
                   <Parameter MinValue="20.0" MaxValue="20000.0" SkewFactor="0.2299045622348785"
-                             ID="Frequency" Automated="1"/>
+                             ID="Frequency"/>
                   <Parameter MinValue="0.0" MaxValue="2.0" StepSize="1.0" ID="Type" Value="0.0"/>
                 </Parameters>
               </Node>
@@ -114,7 +114,7 @@
                     </ComplexData>
                     <Parameters>
                       <Parameter MinValue="20.0" MaxValue="20000.0" SkewFactor="0.2299045622348785"
-                                 ID="Frequency" Automated="1"/>
+                                 ID="Frequency"/>
                       <Parameter MinValue="0.0" MaxValue="2.0" StepSize="1.0" ID="Type" Value="1.0"/>
                     </Parameters>
                   </Node>

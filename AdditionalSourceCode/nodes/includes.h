@@ -9,7 +9,7 @@
 
 // Include compiled network files ------------------
 
-#include "bass_tightener_networkdata.h"
+#include "bass_tightener.h"
 
 #if (defined (_WIN32) || defined (_WIN64))
 #pragma warning( pop )
