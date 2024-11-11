@@ -42,7 +42,7 @@
                 </ComplexData>
                 <Parameters>
                   <Parameter MinValue="20.0" MaxValue="20000.0" SkewFactor="0.2299045622348785"
-                             ID="Frequency"/>
+                             ID="Frequency" Automated="1"/>
                   <Parameter MinValue="0.0" MaxValue="2.0" StepSize="1.0" ID="Type" Value="0.0"/>
                 </Parameters>
               </Node>
@@ -114,7 +114,7 @@
                     </ComplexData>
                     <Parameters>
                       <Parameter MinValue="20.0" MaxValue="20000.0" SkewFactor="0.2299045622348785"
-                                 ID="Frequency"/>
+                                 ID="Frequency" Automated="1"/>
                       <Parameter MinValue="0.0" MaxValue="2.0" StepSize="1.0" ID="Type" Value="1.0"/>
                     </Parameters>
                   </Node>
@@ -141,7 +141,7 @@
           <Connection NodeId="svf_eq1" ParameterId="Gain"/>
         </ModulationTargets>
         <Parameters>
-          <Parameter MinValue="1.0" MaxValue="0.0" ID="Value" Automated="1"/>
+          <Parameter MinValue="0.0" MaxValue="1.0" ID="Value" Automated="1"/>
           <Parameter MinValue="0.0" MaxValue="1.0" ID="Intensity" Automated="1"/>
         </Parameters>
       </Node>
@@ -155,10 +155,10 @@
           <Parameter MinValue="20.0" MaxValue="20000.0" SkewFactor="0.2299045622348785"
                      ID="Frequency" Automated="1"/>
           <Parameter MinValue="0.300000011920929" MaxValue="9.899999618530273" SkewFactor="0.2647178173065186"
-                     ID="Q" Value="0.3378464602457766"/>
-          <Parameter MinValue="18.0" MaxValue="0.0" ID="Gain" Automated="1"/>
+                     ID="Q" Value="0.7903899226490299"/>
+          <Parameter MinValue="24.0" MaxValue="0.0" ID="Gain" Automated="1"/>
           <Parameter MinValue="0.0" MaxValue="1.0" SkewFactor="0.3010300099849701"
-                     ID="Smoothing" Value="0.006631446735997018"/>
+                     ID="Smoothing" Value="0.0"/>
           <Parameter MinValue="0.0" MaxValue="4.0" StepSize="1.0" ID="Mode" Value="4.0"/>
           <Parameter MinValue="0.0" MaxValue="1.0" StepSize="1.0" ID="Enabled" Value="1.0"/>
         </Parameters>
@@ -192,12 +192,12 @@
         </Connections>
       </Parameter>
       <Parameter ID="Tightness" MinValue="0.0" MaxValue="100.0" StepSize="0.1"
-                 SkewFactor="1" Value="64.7">
+                 SkewFactor="1" Value="65.90000000000001">
         <Connections>
           <Connection NodeId="comp" ParameterId="Threshhold"/>
         </Connections>
       </Parameter>
-      <Parameter ID="Gain" MinValue="0.0" MaxValue="1.0" Value="0.0">
+      <Parameter ID="Gain" MinValue="0.0" MaxValue="1.0" Value="0.0445">
         <Connections>
           <Connection NodeId="intensity" ParameterId="Intensity"/>
         </Connections>

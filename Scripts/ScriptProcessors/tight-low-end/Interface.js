@@ -39,7 +39,9 @@ Panel1.setTimerCallback(function()
 });
 
 Panel1.startTimer(1000 / 30);
-function onNoteOn()
+
+const var MainPanel = Content.getComponent("MainPanel");
+MainPanel.setLocalLookAndFeel(laf);function onNoteOn()
 {
 	
 }

@@ -140,7 +140,7 @@ template <int NV> struct GainControl
 
 DECLARE_PARAMETER_RANGE_INV(intensity_modRange, 
                             0., 
-                            18.);
+                            24.);
 
 template <int NV>
 using intensity_mod = parameter::from0To1_inv<filters::svf_eq<NV>, 
@@ -149,17 +149,8 @@ using intensity_mod = parameter::from0To1_inv<filters::svf_eq<NV>,
 
 template <int NV>
 using intensity_t = control::intensity<NV, intensity_mod<NV>>;
-DECLARE_PARAMETER_RANGE_INV(comp_modRange, 
-                            0., 
-                            1.);
-
 template <int NV>
-using comp_mod = parameter::from0To1_inv<intensity_t<NV>, 
-                                         0, 
-                                         comp_modRange>;
-
-template <int NV>
-using comp_t = wrap::mod<comp_mod<NV>, 
+using comp_t = wrap::mod<parameter::plain<intensity_t<NV>, 0>, 
                          wrap::data<dynamics::comp, data::external::displaybuffer<0>>>;
 
 template <int NV>
@@ -269,9 +260,9 @@ template <int NV> struct instance: public bass_tightener_impl::bass_tightener_t_
 			0x005B, 0x0000, 0x4300, 0x7475, 0x664F, 0x0066, 0x0000, 0x41A0, 
             0x4000, 0x469C, 0x18D1, 0x42A9, 0x6C1A, 0x3E6B, 0x0000, 0x0000, 
             0x015B, 0x0000, 0x5400, 0x6769, 0x7468, 0x656E, 0x7373, 0x0000, 
-            0x0000, 0x0000, 0xC800, 0x6642, 0x8166, 0x0042, 0x8000, 0xCD3F, 
+            0x0000, 0x0000, 0xC800, 0xCD42, 0x83CC, 0x0042, 0x8000, 0xCD3F, 
             0xCCCC, 0x5B3D, 0x0002, 0x0000, 0x6147, 0x6E69, 0x0000, 0x0000, 
-            0x0000, 0x8000, 0x003F, 0x0000, 0x0000, 0x8000, 0x003F, 0x0000, 
+            0x0000, 0x8000, 0xA23F, 0x3645, 0x003D, 0x8000, 0x003F, 0x0000, 
             0x5B00, 0x0003, 0x0000, 0x6552, 0x656C, 0x7361, 0x0065, 0x0000, 
             0x0000, 0x0000, 0x4396, 0x0000, 0x0000, 0x81A3, 0x3EDC, 0xCCCD, 
             0x3DCC, 0x045B, 0x0000, 0x4800, 0x7261, 0x6F6D, 0x696E, 0x7363, 
@@ -355,12 +346,12 @@ template <int NV> struct instance: public bass_tightener_impl::bass_tightener_t_
 		; // intensity::Value is automated
 		; // intensity::Intensity is automated
 		
-		;                                     // svf_eq1::Frequency is automated
-		svf_eq1.setParameterT(1, 0.337846);   // filters::svf_eq::Q
-		;                                     // svf_eq1::Gain is automated
-		svf_eq1.setParameterT(3, 0.00663145); // filters::svf_eq::Smoothing
-		svf_eq1.setParameterT(4, 4.);         // filters::svf_eq::Mode
-		svf_eq1.setParameterT(5, 1.);         // filters::svf_eq::Enabled
+		;                                  // svf_eq1::Frequency is automated
+		svf_eq1.setParameterT(1, 0.79039); // filters::svf_eq::Q
+		;                                  // svf_eq1::Gain is automated
+		svf_eq1.setParameterT(3, 0.);      // filters::svf_eq::Smoothing
+		svf_eq1.setParameterT(4, 4.);      // filters::svf_eq::Mode
+		svf_eq1.setParameterT(5, 1.);      // filters::svf_eq::Enabled
 		
 		linkwitzriley.setParameterT(0, 30.);     // filters::linkwitzriley::Frequency
 		linkwitzriley.setParameterT(1, 0.82483); // filters::linkwitzriley::Q
@@ -370,8 +361,8 @@ template <int NV> struct instance: public bass_tightener_impl::bass_tightener_t_
 		linkwitzriley.setParameterT(5, 1.);      // filters::linkwitzriley::Enabled
 		
 		this->setParameterT(0, 84.5485);
-		this->setParameterT(1, 64.7);
-		this->setParameterT(2, 0.);
+		this->setParameterT(1, 65.9);
+		this->setParameterT(2, 0.0445);
 		this->setParameterT(3, 0.);
 		this->setParameterT(4, 0.);
 		this->setParameterT(5, 1.);

@@ -1,4 +1,4 @@
-const var laf = Engine.createGlobalScriptLookAndFeel();
+const laf = Content.createLocalLookAndFeel();
 
 laf.loadImage("{PROJECT_FOLDER}subtle_knob.png", "Knob");
 

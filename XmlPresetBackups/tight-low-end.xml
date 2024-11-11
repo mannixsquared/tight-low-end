@@ -9,12 +9,12 @@
         <Processor Type="ScriptProcessor" ID="Interface" Bypassed="0">
           <ChildProcessors/>
           <Content>
-            <Control type="ScriptSlider" id="Tightness" value="0.0"/>
-            <Control type="ScriptSlider" id="Gain" value="0.0"/>
-            <Control type="ScriptSlider" id="CutOff" value="90.0"/>
-            <Control type="ScriptSlider" id="Release" value="50.0"/>
-            <Control type="ScriptSlider" id="Harmonics" value="0.0"/>
-            <Control type="ScriptButton" id="Button1" value="0"/>
+            <Control type="ScriptSlider" id="Tightness" value="83.5"/>
+            <Control type="ScriptSlider" id="Gain" value="0.300000011920929"/>
+            <Control type="ScriptSlider" id="CutOff" value="113.3000030517578"/>
+            <Control type="ScriptSlider" id="Release" value="6.670000076293945"/>
+            <Control type="ScriptSlider" id="Harmonics" value="0.5299999713897705"/>
+            <Control type="ScriptButton" id="Button1" value="1.0"/>
           </Content>
           <UIData Source="tight-low-endUIData"/>
         </Processor>
@@ -29,8 +29,8 @@
     <Processor Type="EffectChain" ID="FX" Bypassed="0">
       <ChildProcessors>
         <Processor Type="Hardcoded Master FX" ID="TightFX" Bypassed="0" Network="bass_tightener"
-                   CutOff="84.54846954345703" Tightness="64.69999694824219" Gain="0.0"
-                   Release="0.0" Harmonics="0.0" SoloLowEnd="1.0">
+                   CutOff="84.54846954345703" Tightness="83.5" Gain="0.300000011920929"
+                   Release="6.670000076293945" Harmonics="0.5299999713897705" SoloLowEnd="1.0">
           <ChildProcessors/>
           <RoutingMatrix NumSourceChannels="2" Channel0="0" Send0="-1" Channel1="1" Send1="-1"/>
         </Processor>
@@ -44,8 +44,8 @@
     <Processor Type="AudioLooper" ID="Audio Loop Player1" Bypassed="0" Gain="0.3427677750587463"
                Balance="0.0" VoiceLimit="256.0" KillFadeTime="20.0" IconColour="0"
                SyncMode="1.0" PitchTracking="0.0" LoopEnabled="1.0" RootNote="64.0"
-               SampleStartMod="0.0" Reversed="0.0" FileName="/Users/johnmannix/Documents/REAPER Media/Livin for the Night/Livin for the Night.mp3"
-               min="1750364" max="5147520" loopStart="1750364" loopEnd="5147520">
+               SampleStartMod="0.0" Reversed="0.0" FileName="/Volumes/External SSD/Reaper Projects/Let the Rhythm Take Control/Let the Rhythm Take Control-003.wav"
+               min="2408868" max="5261086" loopStart="2408868" loopEnd="5261086">
       <ChildProcessors>
         <Processor Type="MidiProcessorChain" ID="Midi Processor" Bypassed="0">
           <ChildProcessors/>
