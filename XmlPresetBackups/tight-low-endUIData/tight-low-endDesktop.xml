@@ -35,8 +35,8 @@
                stepSize="0.1000000014901161" max="500.0" suffix="Hz" isPluginParameter="1"
                mode="Frequency" height="64.0" bgColour="0" itemColour="0" itemColour2="0"
                width="120.0" numStrips="64.0" text="Cut Off" defaultValue="90.0"
-               min="20.0" showTextBox="0" processorId="TightFX" parameterId="Cut Off"
-               pluginParameterName="Cut Off" isMetaParameter="1" parentComponent="MainPanel"/>
+               min="20.0" showTextBox="0" processorId="TightFX" parameterId="CutOff"
+               pluginParameterName="Cut Off" parentComponent="MainPanel" isMetaParameter="1"/>
     <Component type="ScriptSlider" id="Release" x="430.0" y="340.0" middlePosition="150.0"
                max="300.0" suffix="ms" isPluginParameter="1" height="64.0" bgColour="0"
                itemColour="0" itemColour2="0" width="120.0" numStrips="64.0"

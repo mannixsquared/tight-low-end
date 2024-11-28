@@ -9,12 +9,12 @@
         <Processor Type="ScriptProcessor" ID="Interface" Bypassed="0">
           <ChildProcessors/>
           <Content>
-            <Control type="ScriptSlider" id="Tightness" value="83.5"/>
-            <Control type="ScriptSlider" id="Gain" value="0.300000011920929"/>
-            <Control type="ScriptSlider" id="CutOff" value="113.3000030517578"/>
-            <Control type="ScriptSlider" id="Release" value="6.670000076293945"/>
-            <Control type="ScriptSlider" id="Harmonics" value="0.5299999713897705"/>
-            <Control type="ScriptButton" id="Button1" value="1.0"/>
+            <Control type="ScriptSlider" id="Tightness" value="79.30000305175781"/>
+            <Control type="ScriptSlider" id="Gain" value="0.3499999940395355"/>
+            <Control type="ScriptSlider" id="CutOff" value="90.0"/>
+            <Control type="ScriptSlider" id="Release" value="6.989999771118164"/>
+            <Control type="ScriptSlider" id="Harmonics" value="0.1500000059604645"/>
+            <Control type="ScriptButton" id="Button1" value="0.0"/>
           </Content>
           <UIData Source="tight-low-endUIData"/>
         </Processor>
@@ -29,8 +29,8 @@
     <Processor Type="EffectChain" ID="FX" Bypassed="0">
       <ChildProcessors>
         <Processor Type="Hardcoded Master FX" ID="TightFX" Bypassed="0" Network="bass_tightener"
-                   CutOff="84.54846954345703" Tightness="83.5" Gain="0.300000011920929"
-                   Release="6.670000076293945" Harmonics="0.5299999713897705" SoloLowEnd="1.0">
+                   CutOff="90.0" Tightness="79.30000305175781" Gain="0.3499999940395355"
+                   Release="6.989999771118164" Harmonics="0.1500000059604645" SoloLowEnd="0.0">
           <ChildProcessors/>
           <RoutingMatrix NumSourceChannels="2" Channel0="0" Send0="-1" Channel1="1" Send1="-1"/>
         </Processor>
