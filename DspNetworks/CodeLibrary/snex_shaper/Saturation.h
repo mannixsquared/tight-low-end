@@ -25,7 +25,7 @@ template <int NumVoices> struct Saturation
 	// Implement the Waveshaper here...	
 	float getSample(float x)
 	{
-		return x + drive * chebyshev(1, x) + drive * 0.5f * chebyshev(2, x);
+		return (1.0f - drive) * x + drive * Math.tanh((1.0f + drive) * x);
 	}
 	
 	// These functions are the glue code that call the function above
