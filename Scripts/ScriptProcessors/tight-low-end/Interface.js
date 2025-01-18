@@ -4,6 +4,7 @@ Content.makeFrontInterface(720, 430);
 
 const TightFX = Synth.getEffect("TightFX");
 const var Panel1 = Content.getComponent("Panel1");
+const var LowCut = Synth.getEffect("LowCut");
 
 const dbsource = Synth.getDisplayBufferSource("TightFX");
 
@@ -39,6 +40,14 @@ Panel1.setTimerCallback(function()
 });
 
 Panel1.startTimer(1000 / 30);
+
+inline function onButton2Control(component, value)
+{
+	TightFX.setAttribute(6, value ? 0.0 : 1.0);
+	LowCut.setBypassed(value);
+};
+
+Content.getComponent("Button2").setControlCallback(onButton2Control);
 
 const var MainPanel = Content.getComponent("MainPanel");
 MainPanel.setLocalLookAndFeel(laf);function onNoteOn()

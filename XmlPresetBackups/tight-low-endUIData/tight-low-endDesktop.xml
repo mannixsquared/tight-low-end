@@ -54,7 +54,9 @@
                processorId="TightFX" parameterId="Harmonics" pluginParameterName="Harmonics"
                isMetaParameter="1" parentComponent="MainPanel"/>
     <Component type="ScriptButton" id="Button1" x="250.0" y="24.0" text="SOLO"
-               width="89.0" height="30.0" isMetaParameter="1" processorId="TightFX"
-               parameterId="SoloLowEnd" parentComponent="MainPanel"/>
+               width="89.0" height="30.0" processorId="TightFX" parameterId="SoloLowEnd"
+               parentComponent="MainPanel"/>
+    <Component type="ScriptButton" id="Button2" x="350.0" y="24.0" text="BYPASS"
+               width="100.0" height="30.0" parentComponent="MainPanel"/>
   </Component>
 </ContentProperties>
