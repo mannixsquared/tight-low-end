@@ -27,10 +27,11 @@
                height="220.0" borderRadius="0.0" borderSize="0.0" bufferToImage="1"
                parentComponent="MainPanel"/>
     <Component type="ScriptSlider" id="Gain" x="310.0" y="340.0" middlePosition="50.0"
-               isPluginParameter="1" height="64.0" bgColour="0" itemColour="0"
-               itemColour2="0" width="100.0" numStrips="64.0" showTextBox="0"
+               isPluginParameter="1" height="60" bgColour="0" itemColour="0"
+               itemColour2="0" width="104" numStrips="64.0" showTextBox="0"
                processorId="TightFX" parameterId="Gain" pluginParameterName="Gain"
-               isMetaParameter="1" parentComponent="MainPanel" max="100.0" stepSize="0.1000000014901161"/>
+               isMetaParameter="1" parentComponent="MainPanel" max="100.0" stepSize="0.1000000014901161"
+               text="Pump"/>
     <Component type="ScriptSlider" id="CutOff" x="174.0" y="341.0" middlePosition="90.0"
                stepSize="0.1000000014901161" max="500.0" suffix="Hz" isPluginParameter="1"
                mode="Frequency" height="64.0" bgColour="0" itemColour="0" itemColour2="0"

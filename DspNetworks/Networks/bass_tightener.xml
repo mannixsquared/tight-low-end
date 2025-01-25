@@ -199,12 +199,23 @@
               <Node ID="pma_unscaled" FactoryPath="control.pma_unscaled" Bypassed="0"
                     Name="compression_amount">
                 <ModulationTargets>
-                  <Connection NodeId="svf_eq1" ParameterId="Gain"/>
+                  <Connection NodeId="delay_cable" ParameterId="Value"/>
                 </ModulationTargets>
                 <Parameters>
                   <Parameter MinValue="0.0" MaxValue="1.0" ID="Value" Automated="1"/>
                   <Parameter MinValue="0.0" MaxValue="100.0" ID="Multiply" Automated="1"/>
                   <Parameter MinValue="-18.0" MaxValue="18.0" ID="Add" Value="0.01012500000000038"/>
+                </Parameters>
+              </Node>
+              <Node ID="delay_cable" FactoryPath="control.delay_cable" Bypassed="0"
+                    Name="delay_cable">
+                <ModulationTargets>
+                  <Connection NodeId="svf_eq1" ParameterId="Gain"/>
+                </ModulationTargets>
+                <Parameters>
+                  <Parameter MinValue="0.0" MaxValue="1.0" ID="Value" Automated="1"/>
+                  <Parameter MinValue="0.0" MaxValue="44100.0" ID="DelayTimeSamples" Value="128.0"
+                             DefaultValue="0.0"/>
                 </Parameters>
               </Node>
               <Node ID="svf_eq1" FactoryPath="filters.svf_eq" Bypassed="0" Name="svf_eq1">
@@ -215,15 +226,14 @@
                 </ComplexData>
                 <Parameters>
                   <Parameter MinValue="20.0" MaxValue="20000.0" SkewFactor="0.2299045622348785"
-                             ID="Frequency" DefaultValue="" Value="60.0"/>
+                             ID="Frequency" Automated="1"/>
                   <Parameter MinValue="0.300000011920929" MaxValue="9.899999618530273" SkewFactor="0.2647178173065186"
-                             ID="Q" Value="1.231448416793105" DefaultValue="0.4514712348008257"/>
+                             ID="Q" Value="0.7319307145000141" DefaultValue="0.4514712348008257"/>
                   <Parameter MinValue="-18.0" MaxValue="18.0" ID="Gain" Automated="1" StepSize="0.1"
                              SkewFactor="1"/>
                   <Parameter MinValue="0.0" MaxValue="1.0" SkewFactor="1" ID="Smoothing" Value="0.01675"
                              DefaultValue="0.016578125"/>
-                  <Parameter MinValue="0.0" MaxValue="4.0" StepSize="1.0" ID="Mode" Value="4.0"
-                             DefaultValue="2.0"/>
+                  <Parameter MinValue="0.0" MaxValue="4.0" StepSize="1.0" ID="Mode" Value="2.0"/>
                   <Parameter MinValue="0.0" MaxValue="1.0" StepSize="1.0" ID="Enabled" Value="1.0"/>
                 </Parameters>
               </Node>
@@ -236,26 +246,28 @@
     </Nodes>
     <Parameters>
       <Parameter ID="Cut Off" MinValue="20.0" MaxValue="20000.0" SkewFactor="0.2299045622348785"
-                 Value="90.0" DefaultValue="113.4602805465533">
+                 Value="115.8827199830911" DefaultValue="113.4602805465533">
         <Connections>
           <Connection NodeId="freq_split3" ParameterId="Band 1"/>
           <Connection NodeId="lr2_1" ParameterId="Frequency"/>
+          <Connection NodeId="svf_eq1" ParameterId="Frequency"/>
         </Connections>
       </Parameter>
       <Parameter ID="Tightness" MinValue="0.0" MaxValue="100.0" StepSize="0.1"
-                 SkewFactor="1" Value="0.0" DefaultValue="82.30000000000001">
+                 SkewFactor="1" Value="91.80000000000001" DefaultValue="82.30000000000001">
         <Connections>
           <Connection NodeId="comp" ParameterId="Threshhold"/>
           <Connection NodeId="gain1" ParameterId="Gain"/>
         </Connections>
       </Parameter>
-      <Parameter ID="Gain" MinValue="0.0" MaxValue="100.0" Value="0.0" DefaultValue="0">
+      <Parameter ID="Gain" MinValue="0.0" MaxValue="100.0" Value="25.9890625"
+                 DefaultValue="0">
         <Connections>
           <Connection NodeId="pma_unscaled" ParameterId="Multiply"/>
         </Connections>
       </Parameter>
       <Parameter ID="Release" MinValue="0.0" MaxValue="250.0" StepSize="0.1000000014901161"
-                 SkewFactor="0.4306765496730804" Value="50.00000074505805" DefaultValue="9.800000146031378">
+                 SkewFactor="0.4306765496730804" Value="72.00000107288359" DefaultValue="9.800000146031378">
         <Connections>
           <Connection NodeId="comp" ParameterId="Release"/>
         </Connections>

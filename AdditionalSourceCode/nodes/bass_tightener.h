@@ -79,8 +79,11 @@ using smoothed_parameter_t = wrap::mod<parameter::plain<snex_shaper_t<NV>, 0>,
                                        control::smoothed_parameter<NV, smoothers::linear_ramp<NV>>>;
 
 template <int NV>
+using delay_cable_t = control::delay_cable<NV, 
+                                           parameter::plain<filters::svf_eq<NV>, 2>>;
+template <int NV>
 using pma_unscaled_t = control::pma_unscaled<NV, 
-                                             parameter::plain<filters::svf_eq<NV>, 2>>;
+                                             parameter::plain<delay_cable_t<NV>, 0>>;
 template <int NV>
 using comp_t = wrap::mod<parameter::plain<pma_unscaled_t<NV>, 0>, 
                          wrap::data<dynamics::comp, data::external::displaybuffer<0>>>;
@@ -131,6 +134,7 @@ using chain_t = container::chain<parameter::empty,
 template <int NV>
 using wrappma_unscaled1_t = container::chain<parameter::empty, 
                                              wrap::fix<2, pma_unscaled_t<NV>>, 
+                                             delay_cable_t<NV>, 
                                              filters::svf_eq<NV>>;
 
 template <int NV>
@@ -148,7 +152,8 @@ namespace bass_tightener_t_parameters
 template <int NV>
 using CutOff = parameter::chain<ranges::Identity, 
                                 parameter::plain<bass_tightener_impl::freq_split3_t<NV>, 0>, 
-                                parameter::plain<jdsp::jlinkwitzriley, 0>>;
+                                parameter::plain<jdsp::jlinkwitzriley, 0>, 
+                                parameter::plain<filters::svf_eq<NV>, 0>>;
 
 DECLARE_PARAMETER_RANGE_STEP(Tightness_InputRange, 
                              0., 
@@ -239,13 +244,13 @@ template <int NV> struct instance: public bass_tightener_impl::bass_tightener_t_
 		SNEX_METADATA_ENCODED_PARAMETERS(118)
 		{
 			0x005B, 0x0000, 0x4300, 0x7475, 0x664F, 0x0066, 0x0000, 0x41A0, 
-            0x4000, 0x469C, 0x0000, 0x42B4, 0x6C1A, 0x3E6B, 0x0000, 0x0000, 
+            0x4000, 0x469C, 0xC3F4, 0x42E7, 0x6C1A, 0x3E6B, 0x0000, 0x0000, 
             0x015B, 0x0000, 0x5400, 0x6769, 0x7468, 0x656E, 0x7373, 0x0000, 
-            0x0000, 0x0000, 0xC800, 0x0042, 0x0000, 0x0000, 0x8000, 0xCD3F, 
+            0x0000, 0x0000, 0xC800, 0x9A42, 0xB799, 0x0042, 0x8000, 0xCD3F, 
             0xCCCC, 0x5B3D, 0x0002, 0x0000, 0x6147, 0x6E69, 0x0000, 0x0000, 
-            0x0000, 0xC800, 0x0042, 0x0000, 0x0000, 0x8000, 0x003F, 0x0000, 
+            0x0000, 0xC800, 0x9A42, 0xCFE9, 0x0041, 0x8000, 0x003F, 0x0000, 
             0x5B00, 0x0003, 0x0000, 0x6552, 0x656C, 0x7361, 0x0065, 0x0000, 
-            0x0000, 0x0000, 0x437A, 0x0000, 0x4248, 0x81A3, 0x3EDC, 0xCCCD, 
+            0x0000, 0x0000, 0x437A, 0x0000, 0x4290, 0x81A3, 0x3EDC, 0xCCCD, 
             0x3DCC, 0x045B, 0x0000, 0x4800, 0x7261, 0x6F6D, 0x696E, 0x7363, 
             0x0000, 0x0000, 0x0000, 0x8000, 0x003F, 0x0000, 0x0000, 0x8000, 
             0x003F, 0x0000, 0x5B00, 0x0005, 0x0000, 0x6F53, 0x6F6C, 0x6F4C, 
@@ -281,7 +286,8 @@ template <int NV> struct instance: public bass_tightener_impl::bass_tightener_t_
 		auto& ms_encode = this->getT(2).getT(0).getT(2);             // routing::ms_encode
 		auto& wrappma_unscaled1 = this->getT(2).getT(1);             // bass_tightener_impl::wrappma_unscaled1_t<NV>
 		auto& pma_unscaled = this->getT(2).getT(1).getT(0);          // bass_tightener_impl::pma_unscaled_t<NV>
-		auto& svf_eq1 = this->getT(2).getT(1).getT(1);               // filters::svf_eq<NV>
+		auto& delay_cable = this->getT(2).getT(1).getT(1);           // bass_tightener_impl::delay_cable_t<NV>
+		auto& svf_eq1 = this->getT(2).getT(1).getT(2);               // filters::svf_eq<NV>
 		
 		// Parameter Connections -------------------------------------------------------------------
 		
@@ -289,6 +295,7 @@ template <int NV> struct instance: public bass_tightener_impl::bass_tightener_t_
 		auto& CutOff_p = this->getParameterT(0);
 		CutOff_p.connectT(0, freq_split3); // CutOff -> freq_split3::Band1
 		CutOff_p.connectT(1, lr2_1);       // CutOff -> lr2_1::Frequency
+		CutOff_p.connectT(2, svf_eq1);     // CutOff -> svf_eq1::Frequency
 		
 		auto& Tightness_p = this->getParameterT(1);
 		Tightness_p.connectT(0, comp);  // Tightness -> comp::Threshhold
@@ -309,9 +316,10 @@ template <int NV> struct instance: public bass_tightener_impl::bass_tightener_t_
 		
 		// Modulation Connections ------------------------------------------------------------------
 		
-		smoothed_parameter.getParameter().connectT(0, snex_shaper);          // smoothed_parameter -> snex_shaper::drive
-		pma_unscaled.getWrappedObject().getParameter().connectT(0, svf_eq1); // pma_unscaled -> svf_eq1::Gain
-		comp.getParameter().connectT(0, pma_unscaled);                       // comp -> pma_unscaled::Value
+		smoothed_parameter.getParameter().connectT(0, snex_shaper);              // smoothed_parameter -> snex_shaper::drive
+		delay_cable.getWrappedObject().getParameter().connectT(0, svf_eq1);      // delay_cable -> svf_eq1::Gain
+		pma_unscaled.getWrappedObject().getParameter().connectT(0, delay_cable); // pma_unscaled -> delay_cable::Value
+		comp.getParameter().connectT(0, pma_unscaled);                           // comp -> pma_unscaled::Value
 		
 		// Default Values --------------------------------------------------------------------------
 		
@@ -356,17 +364,20 @@ template <int NV> struct instance: public bass_tightener_impl::bass_tightener_t_
 		;                                        // pma_unscaled::Multiply is automated
 		pma_unscaled.setParameterT(2, 0.010125); // control::pma_unscaled::Add
 		
-		svf_eq1.setParameterT(0, 60.);     // filters::svf_eq::Frequency
-		svf_eq1.setParameterT(1, 1.23145); // filters::svf_eq::Q
-		;                                  // svf_eq1::Gain is automated
-		svf_eq1.setParameterT(3, 0.01675); // filters::svf_eq::Smoothing
-		svf_eq1.setParameterT(4, 4.);      // filters::svf_eq::Mode
-		svf_eq1.setParameterT(5, 1.);      // filters::svf_eq::Enabled
+		;                                   // delay_cable::Value is automated
+		delay_cable.setParameterT(1, 128.); // control::delay_cable::DelayTimeSamples
 		
-		this->setParameterT(0, 90.);
-		this->setParameterT(1, 0.);
-		this->setParameterT(2, 0.);
-		this->setParameterT(3, 50.);
+		;                                   // svf_eq1::Frequency is automated
+		svf_eq1.setParameterT(1, 0.731931); // filters::svf_eq::Q
+		;                                   // svf_eq1::Gain is automated
+		svf_eq1.setParameterT(3, 0.01675);  // filters::svf_eq::Smoothing
+		svf_eq1.setParameterT(4, 2.);       // filters::svf_eq::Mode
+		svf_eq1.setParameterT(5, 1.);       // filters::svf_eq::Enabled
+		
+		this->setParameterT(0, 115.883);
+		this->setParameterT(1, 91.8);
+		this->setParameterT(2, 25.9891);
+		this->setParameterT(3, 72.);
 		this->setParameterT(4, 0.);
 		this->setParameterT(5, 0.);
 		this->setParameterT(6, 1.);
