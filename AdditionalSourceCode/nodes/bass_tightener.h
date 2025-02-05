@@ -89,8 +89,15 @@ using comp_t = wrap::mod<parameter::plain<pma_unscaled_t<NV>, 0>,
                          wrap::data<dynamics::comp, data::external::displaybuffer<0>>>;
 
 template <int NV>
+using wrapcomp1_t_ = container::chain<parameter::empty, 
+                                      wrap::fix<2, comp_t<NV>>>;
+
+template <int NV>
+using wrapcomp1_t = wrap::frame<2, wrapcomp1_t_<NV>>;
+
+template <int NV>
 using soft_bypass_t_ = container::chain<parameter::empty, 
-                                        wrap::fix<2, comp_t<NV>>, 
+                                        wrap::fix<2, wrapcomp1_t<NV>>, 
                                         snex_shaper_t<NV>, 
                                         core::gain<NV>>;
 
@@ -127,9 +134,9 @@ using multi_t = container::multi<parameter::empty,
 
 template <int NV>
 using chain_t = container::chain<parameter::empty, 
-                                 wrap::fix<2, routing::ms_decode>, 
+                                 wrap::fix<2, routing::ms_encode>, 
                                  multi_t<NV>, 
-                                 routing::ms_encode>;
+                                 routing::ms_decode>;
 
 template <int NV>
 using wrappma_unscaled1_t = container::chain<parameter::empty, 
@@ -184,6 +191,21 @@ using Tightness = parameter::chain<Tightness_InputRange,
                                    Tightness_0<NV>, 
                                    Tightness_1<NV>>;
 
+DECLARE_PARAMETER_RANGE(Gain_InputRange, 
+                        0., 
+                        10.);
+DECLARE_PARAMETER_RANGE(Gain_0Range, 
+                        0., 
+                        18.);
+
+template <int NV>
+using Gain_0 = parameter::from0To1<bass_tightener_impl::pma_unscaled_t<NV>, 
+                                   1, 
+                                   Gain_0Range>;
+
+template <int NV>
+using Gain = parameter::chain<Gain_InputRange, Gain_0<NV>>;
+
 template <int NV>
 using SoloLowEnd = parameter::from0To1_inv<core::gain<NV>, 
                                            0, 
@@ -201,9 +223,6 @@ using Enabled = parameter::chain<ranges::Identity,
                                  Enabled_1<NV>, 
                                  Enabled_0<NV>>;
 
-template <int NV>
-using Gain = parameter::plain<bass_tightener_impl::pma_unscaled_t<NV>, 
-                              1>;
 template <int NV>
 using Release = parameter::plain<bass_tightener_impl::comp_t<NV>, 
                                  2>;
@@ -244,13 +263,13 @@ template <int NV> struct instance: public bass_tightener_impl::bass_tightener_t_
 		SNEX_METADATA_ENCODED_PARAMETERS(118)
 		{
 			0x005B, 0x0000, 0x4300, 0x7475, 0x664F, 0x0066, 0x0000, 0x41A0, 
-            0x4000, 0x469C, 0xC3F4, 0x42E7, 0x6C1A, 0x3E6B, 0x0000, 0x0000, 
+            0x4000, 0x469C, 0xEBAA, 0x42E2, 0x6C1A, 0x3E6B, 0x0000, 0x0000, 
             0x015B, 0x0000, 0x5400, 0x6769, 0x7468, 0x656E, 0x7373, 0x0000, 
-            0x0000, 0x0000, 0xC800, 0x9A42, 0xB799, 0x0042, 0x8000, 0xCD3F, 
+            0x0000, 0x0000, 0xC800, 0x9A42, 0xA499, 0x0042, 0x8000, 0xCD3F, 
             0xCCCC, 0x5B3D, 0x0002, 0x0000, 0x6147, 0x6E69, 0x0000, 0x0000, 
-            0x0000, 0xC800, 0x9A42, 0xCFE9, 0x0041, 0x8000, 0x003F, 0x0000, 
+            0x0000, 0x2000, 0xB841, 0xE19E, 0x003F, 0x8000, 0x003F, 0x0000, 
             0x5B00, 0x0003, 0x0000, 0x6552, 0x656C, 0x7361, 0x0065, 0x0000, 
-            0x0000, 0x0000, 0x437A, 0x0000, 0x4290, 0x81A3, 0x3EDC, 0xCCCD, 
+            0x0000, 0x0000, 0x437A, 0x3333, 0x4187, 0x81A3, 0x3EDC, 0xCCCD, 
             0x3DCC, 0x045B, 0x0000, 0x4800, 0x7261, 0x6F6D, 0x696E, 0x7363, 
             0x0000, 0x0000, 0x0000, 0x8000, 0x003F, 0x0000, 0x0000, 0x8000, 
             0x003F, 0x0000, 0x5B00, 0x0005, 0x0000, 0x6F53, 0x6F6C, 0x6F4C, 
@@ -270,7 +289,8 @@ template <int NV> struct instance: public bass_tightener_impl::bass_tightener_t_
 		auto& band1 = this->getT(1).getT(0);                         // bass_tightener_impl::band1_t<NV>
 		auto& lr1_1 = this->getT(1).getT(0).getT(0);                 // jdsp::jlinkwitzriley
 		auto& soft_bypass = this->getT(1).getT(0).getT(1);           // bass_tightener_impl::soft_bypass_t<NV>
-		auto& comp = this->getT(1).getT(0).getT(1).getT(0);          // bass_tightener_impl::comp_t<NV>
+		auto& wrapcomp1 = this->getT(1).getT(0).getT(1).getT(0);     // bass_tightener_impl::wrapcomp1_t<NV>
+		auto& comp = this->getT(1).getT(0).getT(1).getT(0).getT(0);  // bass_tightener_impl::comp_t<NV>
 		auto& snex_shaper = this->getT(1).getT(0).getT(1).getT(1);   // bass_tightener_impl::snex_shaper_t<NV>
 		auto& gain1 = this->getT(1).getT(0).getT(1).getT(2);         // core::gain<NV>
 		auto& wrapband22 = this->getT(1).getT(1);                    // bass_tightener_impl::wrapband22_t<NV>
@@ -279,11 +299,11 @@ template <int NV> struct instance: public bass_tightener_impl::bass_tightener_t_
 		auto& gain = this->getT(1).getT(1).getT(0).getT(1);          // core::gain<NV>
 		auto& soft_bypass1 = this->getT(2);                          // bass_tightener_impl::soft_bypass1_t<NV>
 		auto& chain = this->getT(2).getT(0);                         // bass_tightener_impl::chain_t<NV>
-		auto& ms_decode = this->getT(2).getT(0).getT(0);             // routing::ms_decode
+		auto& ms_encode = this->getT(2).getT(0).getT(0);             // routing::ms_encode
 		auto& multi = this->getT(2).getT(0).getT(1);                 // bass_tightener_impl::multi_t<NV>
 		auto& mul = this->getT(2).getT(0).getT(1).getT(0);           // math::mul<NV>
 		auto& linkwitzriley = this->getT(2).getT(0).getT(1).getT(1); // filters::linkwitzriley<NV>
-		auto& ms_encode = this->getT(2).getT(0).getT(2);             // routing::ms_encode
+		auto& ms_decode = this->getT(2).getT(0).getT(2);             // routing::ms_decode
 		auto& wrappma_unscaled1 = this->getT(2).getT(1);             // bass_tightener_impl::wrappma_unscaled1_t<NV>
 		auto& pma_unscaled = this->getT(2).getT(1).getT(0);          // bass_tightener_impl::pma_unscaled_t<NV>
 		auto& delay_cable = this->getT(2).getT(1).getT(1);           // bass_tightener_impl::delay_cable_t<NV>
@@ -353,7 +373,7 @@ template <int NV> struct instance: public bass_tightener_impl::bass_tightener_t_
 		
 		mul.setParameterT(0, 1.); // math::mul::Value
 		
-		linkwitzriley.setParameterT(0, 120.);     // filters::linkwitzriley::Frequency
+		linkwitzriley.setParameterT(0, 250.);     // filters::linkwitzriley::Frequency
 		linkwitzriley.setParameterT(1, 0.336454); // filters::linkwitzriley::Q
 		linkwitzriley.setParameterT(2, 0.);       // filters::linkwitzriley::Gain
 		linkwitzriley.setParameterT(3, 0.01);     // filters::linkwitzriley::Smoothing
@@ -364,20 +384,20 @@ template <int NV> struct instance: public bass_tightener_impl::bass_tightener_t_
 		;                                        // pma_unscaled::Multiply is automated
 		pma_unscaled.setParameterT(2, 0.010125); // control::pma_unscaled::Add
 		
-		;                                   // delay_cable::Value is automated
-		delay_cable.setParameterT(1, 128.); // control::delay_cable::DelayTimeSamples
+		;                                  // delay_cable::Value is automated
+		delay_cable.setParameterT(1, 64.); // control::delay_cable::DelayTimeSamples
 		
-		;                                   // svf_eq1::Frequency is automated
-		svf_eq1.setParameterT(1, 0.731931); // filters::svf_eq::Q
-		;                                   // svf_eq1::Gain is automated
-		svf_eq1.setParameterT(3, 0.01675);  // filters::svf_eq::Smoothing
-		svf_eq1.setParameterT(4, 2.);       // filters::svf_eq::Mode
-		svf_eq1.setParameterT(5, 1.);       // filters::svf_eq::Enabled
+		;                                    // svf_eq1::Frequency is automated
+		svf_eq1.setParameterT(1, 0.731931);  // filters::svf_eq::Q
+		;                                    // svf_eq1::Gain is automated
+		svf_eq1.setParameterT(3, 0.0112187); // filters::svf_eq::Smoothing
+		svf_eq1.setParameterT(4, 2.);        // filters::svf_eq::Mode
+		svf_eq1.setParameterT(5, 1.);        // filters::svf_eq::Enabled
 		
-		this->setParameterT(0, 115.883);
-		this->setParameterT(1, 91.8);
-		this->setParameterT(2, 25.9891);
-		this->setParameterT(3, 72.);
+		this->setParameterT(0, 113.46);
+		this->setParameterT(1, 82.3);
+		this->setParameterT(2, 1.76266);
+		this->setParameterT(3, 16.9);
 		this->setParameterT(4, 0.);
 		this->setParameterT(5, 0.);
 		this->setParameterT(6, 1.);
@@ -400,8 +420,8 @@ template <int NV> struct instance: public bass_tightener_impl::bass_tightener_t_
 	{
 		// External Data Connections ---------------------------------------------------------------
 		
-		this->getT(1).getT(0).getT(1).getT(0).setExternalData(b, index); // bass_tightener_impl::comp_t<NV>
-		this->getT(1).getT(0).getT(1).getT(1).setExternalData(b, index); // bass_tightener_impl::snex_shaper_t<NV>
+		this->getT(1).getT(0).getT(1).getT(0).getT(0).setExternalData(b, index); // bass_tightener_impl::comp_t<NV>
+		this->getT(1).getT(0).getT(1).getT(1).setExternalData(b, index);         // bass_tightener_impl::snex_shaper_t<NV>
 	}
 };
 }
